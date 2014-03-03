@@ -66,7 +66,7 @@
             * S    毫秒
         * [完整支持的格式](http://momentjs.com/docs/#/displaying/format/)
     * `i18n`国际化
-        * 在引入包后，直接赋值`Moment(i18n)`。
+        * 在引入包后，直接赋值`Moment.lang(i18n)`。
         * 本组件当前只支持`zh-cn`，`zh-tw`，`en`三种语言，默认为英文。
         * [添加更多语言和自定义语言](http://momentjs.com/docs/#/i18n/)
 
