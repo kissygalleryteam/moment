@@ -1,7 +1,7 @@
 /*
 combined files : 
 
-kg/moment/2.0.0/index
+kg/moment/2.0.1/index
 
 */
 /**
@@ -11,7 +11,7 @@ kg/moment/2.0.0/index
  * 详细doc参阅http://momentjs.com/docs/
  * @author 承风<libiao.lb@tmall.com>
  */
-KISSY.add('gallery/moment/1.0/index', function(S) {
+KISSY.add('kg/moment/2.0.1/index',function(S) {
 
     /************************************
         Constants
