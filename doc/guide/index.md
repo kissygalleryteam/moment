@@ -3,13 +3,13 @@
 * Moment是[moment.js v2.5.1](http://momentjs.com/)的KISSY Gallery封装，进行了简单修改以符合KISSY规范，是非常强大的时间格式化、计算、转义、i18n的组件。
 * MIT licence
 
-* 版本：2.0.0
+* 版本：2.1.0
 * 作者：承风
-* demo：[http://kg.kissyui.com/moment/2.0.0/demo/index.html](http://kg.kissyui.com/moment/2.0.0/demo/index.html)
+* demo：[http://kg.kissyui.com/moment/2.1.0/demo/index.html](http://kg.kissyui.com/moment/2.1.0/demo/index.html)
 
 ## 初始化组件
 
-    S.use('kg/moment/2.0.0/index', function (S, Moment) {
+    S.use('kg/moment/2.1.0/index', function (S, Moment) {
          var moment = new Moment();
     });
 

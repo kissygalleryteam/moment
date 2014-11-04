@@ -14,7 +14,7 @@
         border-radius: 4px;
     }
     </style>
-<script>var S = KISSY;S.config({packages:[{name:"kg",path:"http://g.tbcdn.cn/kg/",charset:"utf-8",ignorePackageNameInUri:true}]});if (S.Config.debug){var srcPath = "../";S.config({packages:[{name:"kg/moment/2.0.0",path:srcPath,charset:"utf-8",ignorePackageNameInUri:true}]});}</script></head>
+<script>var S = KISSY;S.config({packages:[{name:"kg",path:"http://g.tbcdn.cn/kg/",charset:"utf-8",ignorePackageNameInUri:true}]});if (S.Config.debug){var srcPath = "../";S.config({packages:[{name:"kg/moment/2.1.0",path:srcPath,charset:"utf-8",ignorePackageNameInUri:true}]});}</script></head>
 <body>
 <h2>Moment的demo</h2>
 <h3>字符串转时间</h3>
@@ -55,19 +55,8 @@
 </ul>
 <script>
     var S = KISSY;
-    var srcPath = "../../";
-    S.config({
-        packages:[
-            {
-                name:"kg/moment",
-                path:srcPath,
-                charset:"utf-8",
-                ignorePackageNameInUri:true
-            }
-        ]
-    });
 
-    S.use('dom, kg/moment/2.0.0/index', function (S, DOM, Moment) {
+    S.use('dom, kg/moment/2.0.1/index', function (S, DOM, Moment) {
           DOM.get('.st0').innerHTML = new Moment("12-25-1995", "MM-DD-YYYY").toDate();
           DOM.get('.st1').innerHTML = new Moment("2010-10-20 4:30", "YYYY-MM-DD HH:mm").toDate();
           DOM.get('.st2').innerHTML = new Moment("Apr 4 05:06:07", "MMM DD hh:mm:ss").toDate();

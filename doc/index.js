@@ -5,7 +5,7 @@
  * 详细doc参阅http://momentjs.com/docs/
  * @author 承风<libiao.lb@tmall.com>
  */
-KISSY.add('gallery/moment/1.0/index', function(S) {
+KISSY.add(function(S) {
 
     /************************************
         Constants

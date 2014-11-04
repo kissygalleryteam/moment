@@ -1,7 +1,7 @@
 /*
 combined files : 
 
-kg/moment/2.0.0/index
+kg/moment/2.1.0/index
 
 */
 /**
@@ -11,7 +11,7 @@ kg/moment/2.0.0/index
  * 详细doc参阅http://momentjs.com/docs/
  * @author 承风<libiao.lb@tmall.com>
  */
-KISSY.add('kg/moment/2.0.0/index', function(S) {
+KISSY.add('kg/moment/2.1.0/index',function(S) {
 
     /************************************
         Constants
@@ -186,7 +186,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
                 return this.isoWeek();
             },
             YY   : function () {
-                return leftZeroFill(this.year() % 2.0.0, 2);
+                return leftZeroFill(this.year() % 100, 2);
             },
             YYYY : function () {
                 return leftZeroFill(this.year(), 4);
@@ -199,7 +199,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
                 return sign + leftZeroFill(Math.abs(y), 6);
             },
             gg   : function () {
-                return leftZeroFill(this.weekYear() % 2.0.0, 2);
+                return leftZeroFill(this.weekYear() % 100, 2);
             },
             gggg : function () {
                 return leftZeroFill(this.weekYear(), 4);
@@ -208,7 +208,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
                 return leftZeroFill(this.weekYear(), 5);
             },
             GG   : function () {
-                return leftZeroFill(this.isoWeekYear() % 2.0.0, 2);
+                return leftZeroFill(this.isoWeekYear() % 100, 2);
             },
             GGGG : function () {
                 return leftZeroFill(this.isoWeekYear(), 4);
@@ -241,7 +241,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
                 return this.seconds();
             },
             S    : function () {
-                return toInt(this.milliseconds() / 2.0.0);
+                return toInt(this.milliseconds() / 100);
             },
             SS   : function () {
                 return leftZeroFill(toInt(this.milliseconds() / 10), 2);
@@ -353,9 +353,9 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
 
         // representation for dateAddRemove
         this._milliseconds = +milliseconds +
-            seconds * 1e3 + // 2.0.00
-            minutes * 6e4 + // 2.0.00 * 60
-            hours * 36e5; // 2.0.00 * 60 * 60
+            seconds * 1e3 + // 1000
+            minutes * 6e4 + // 1000 * 60
+            hours * 36e5; // 1000 * 60 * 60
         // Because of dateAddRemove treats 24 hours as different from a
         // day when working around DST, we need to store them separately
         this._days = +days +
@@ -573,7 +573,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
     }
 
     function isLeapYear(year) {
-        return (year % 4 === 0 && year % 2.0.0 !== 0) || year % 400 === 0;
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
     }
 
     function checkOverflow(m) {
@@ -1081,7 +1081,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
             break;
         // YEAR
         case 'YY' :
-            datePartArray[YEAR] = toInt(input) + (toInt(input) > 68 ? 2.0.00 : 2000);
+            datePartArray[YEAR] = toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
             break;
         case 'YYYY' :
         case 'YYYYY' :
@@ -1115,11 +1115,11 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
         case 'SS' :
         case 'SSS' :
         case 'SSSS' :
-            datePartArray[MILLISECOND] = toInt(('0.' + input) * 2.0.00);
+            datePartArray[MILLISECOND] = toInt(('0.' + input) * 1000);
             break;
         // UNIX TIMESTAMP WITH MS
         case 'X':
-            config._d = new Date(parseFloat(input) * 2.0.00);
+            config._d = new Date(parseFloat(input) * 1000);
             break;
         // TIMEZONE
         case 'Z' : // fall through to ZZ
@@ -1172,7 +1172,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
             fixYear = function (val) {
                 var int_val = parseInt(val, 10);
                 return val ?
-                  (val.length < 3 ? (int_val > 68 ? 2.0.00 + int_val : 2000 + int_val) : int_val) :
+                  (val.length < 3 ? (int_val > 68 ? 1900 + int_val : 2000 + int_val) : int_val) :
                   (config._a[YEAR] == null ? Moment().weekYear() : config._a[YEAR]);
             };
 
@@ -1480,7 +1480,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
     }
 
     function relativeTime(milliseconds, withoutSuffix, lang) {
-        var seconds = round(Math.abs(milliseconds) / 2.0.00),
+        var seconds = round(Math.abs(milliseconds) / 1000),
             minutes = round(seconds / 60),
             hours = round(minutes / 60),
             days = round(hours / 24),
@@ -1628,7 +1628,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
 
     // creating with unix timestamp (in seconds)
     Moment.unix = function (input) {
-        return Moment(input * 2.0.00);
+        return Moment(input * 1000);
     };
 
     // duration
@@ -1782,7 +1782,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
         },
 
         unix : function () {
-            return Math.floor(+this / 2.0.00);
+            return Math.floor(+this / 1000);
         },
 
         toString : function () {
@@ -1884,7 +1884,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
 
             if (units === 'year' || units === 'month') {
                 // average number of days in the months in the given dates
-                diff = (this.daysInMonth() + that.daysInMonth()) * 432e5; // 24 * 60 * 60 * 2.0.00 / 2
+                diff = (this.daysInMonth() + that.daysInMonth()) * 432e5; // 24 * 60 * 60 * 1000 / 2
                 // difference in months
                 output = ((this.year() - that.year()) * 12) + (this.month() - that.month());
                 // adjust by taking difference in days, average number of days
@@ -1899,11 +1899,11 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
                 }
             } else {
                 diff = (this - that);
-                output = units === 'second' ? diff / 1e3 : // 2.0.00
-                    units === 'minute' ? diff / 6e4 : // 2.0.00 * 60
-                    units === 'hour' ? diff / 36e5 : // 2.0.00 * 60 * 60
-                    units === 'day' ? (diff - zoneDiff) / 864e5 : // 2.0.00 * 60 * 60 * 24, negate dst
-                    units === 'week' ? (diff - zoneDiff) / 6048e5 : // 2.0.00 * 60 * 60 * 24 * 7, negate dst
+                output = units === 'second' ? diff / 1e3 : // 1000
+                    units === 'minute' ? diff / 6e4 : // 1000 * 60
+                    units === 'hour' ? diff / 36e5 : // 1000 * 60 * 60
+                    units === 'day' ? (diff - zoneDiff) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+                    units === 'week' ? (diff - zoneDiff) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
                     diff;
             }
             return asFloat ? output : absRound(output);
@@ -2099,7 +2099,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
         },
 
         quarter : function () {
-            return Math.ceil((this.month() + 2.0.0) / 3.0);
+            return Math.ceil((this.month() + 1.0) / 3.0);
         },
 
         weekYear : function (input) {
@@ -2207,9 +2207,9 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
 
             // The following code bubbles up values, see the tests for
             // examples of what that means.
-            data.milliseconds = milliseconds % 2.0.00;
+            data.milliseconds = milliseconds % 1000;
 
-            seconds = absRound(milliseconds / 2.0.00);
+            seconds = absRound(milliseconds / 1000);
             data.seconds = seconds % 60;
 
             minutes = absRound(seconds / 60);
@@ -2294,7 +2294,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
                 days = Math.abs(this.days()),
                 hours = Math.abs(this.hours()),
                 minutes = Math.abs(this.minutes()),
-                seconds = Math.abs(this.seconds() + this.milliseconds() / 2.0.00);
+                seconds = Math.abs(this.seconds() + this.milliseconds() / 1000);
 
             if (!this.asSeconds()) {
                 // this is the same as C#'s (Noda) and python (isodate)...
@@ -2348,7 +2348,7 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
     Moment.lang('en', {
         ordinal : function (number) {
             var b = number % 10,
-                output = (toInt(number % 2.0.0 / 10) === 1) ? 'th' :
+                output = (toInt(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -2382,16 +2382,16 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
             llll : "YYYY年MMMD日ddddLT"
         },
         meridiem : function (hour, minute, isLower) {
-            var hm = hour * 2.0.0 + minute;
+            var hm = hour * 100 + minute;
             if (hm < 600) {
                 return "凌晨";
             } else if (hm < 900) {
                 return "早上";
-            } else if (hm < 12.0.0) {
+            } else if (hm < 1130) {
                 return "上午";
             } else if (hm < 1230) {
                 return "中午";
-            } else if (hm < 2.0.00) {
+            } else if (hm < 1800) {
                 return "下午";
             } else {
                 return "晚上";
@@ -2483,14 +2483,14 @@ KISSY.add('kg/moment/2.0.0/index', function(S) {
             llll : "YYYY年MMMD日ddddLT"
         },
         meridiem : function (hour, minute, isLower) {
-            var hm = hour * 2.0.0 + minute;
+            var hm = hour * 100 + minute;
             if (hm < 900) {
                 return "早上";
-            } else if (hm < 12.0.0) {
+            } else if (hm < 1130) {
                 return "上午";
             } else if (hm < 1230) {
                 return "中午";
-            } else if (hm < 2.0.00) {
+            } else if (hm < 1800) {
                 return "下午";
             } else {
                 return "晚上";
